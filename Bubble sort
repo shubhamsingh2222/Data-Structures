@@ -1,0 +1,43 @@
+#include<stdio.h>
+void printfunc(int *a, int n)
+{
+for(int i=0;i<n;i++)
+{
+  printf("%d ",a[i]);
+}
+void bubbleSort(int *a, int n)
+{
+int temp;
+int isSort=0;
+for(int i=0;i<n-1;i++)  // Number of passes
+{
+  isSort=1;
+  for(int j=0;j<n-1-i;j++)  // For comparison in each passes 
+  {
+    if(a[j]>a[j+1])
+    {
+    temp=a[j];
+    a[j]=a[j+1];
+    a[j+1]=temp;
+    }
+  }
+  if(isSort)
+  {
+  return;
+}
+}
+int main()
+{
+  int i,j,a[i], n;
+  printf("Enter the number of elements in array: ");
+  scanf("%d", &n);
+  printf("Enter the elements in array: ");
+  for(i=0;i<n;i++)
+  {
+  scanf("%d", &a[i]);
+  }
+  bubbleSort(a,n);
+  printfunc(a,n);
+  
+  return 0;
+}
