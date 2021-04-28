@@ -29,7 +29,7 @@ void AddNodeEnd(struct Node**head, int n){
     
 }
 void PrintList(struct Node*head){
-    struct Node*temp=head;
+    struct Node*temp=head;                // Again creating a node to traverse and print "current or temp1" or any name can be given;
     while(temp!=NULL)
     {
         printf("%d ",temp->data);
