@@ -1,0 +1,53 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+    int data;
+    struct Node*next;
+};
+struct Node*head;
+
+void AddNodeEnd(struct Node**head, int n){
+    
+    struct Node *temp=(struct Node*)malloc(sizeof(struct Node));
+    
+    temp->data=n;
+    temp->next=NULL;
+    struct Node*temp1=*head;
+    if(*head==NULL)
+    {
+        *head=temp;
+    }
+    else
+    {
+        while(temp1->next!=NULL)
+        
+            temp1=temp1->next;
+            temp1->next=temp;
+        
+    }
+    
+}
+void PrintList(struct Node*head){
+    struct Node*temp=head;
+    while(temp!=NULL)
+    {
+        printf("%d ",temp->data);
+        temp=temp->next;
+    }
+    printf("\n");
+}
+int main()
+{
+    struct Node*head=NULL;
+    AddNodeEnd(&head,1);
+    AddNodeEnd(&head,2);
+    AddNodeEnd(&head,3);
+    PrintList(head);
+    AddNodeEnd(&head,4);
+    AddNodeEnd(&head,5);
+    AddNodeEnd(&head,6);
+    PrintList(head);
+    
+    return 0;
+}
