@@ -1,0 +1,60 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct Node{
+  int data;
+  struct Node*next;
+};
+
+struct Node*head=NULL;
+
+void Push(int x)
+{
+  struct Node*temp=(struct Node*)malloc(sizeof(struct Node));
+  temp->data=x;
+  temp->next=head;
+  head=temp;
+  
+}
+
+void Pop()
+{
+  struct Node*temp=head;
+  if(head==NULL)
+  {
+    printf("Stack is empty:");
+    return;
+  }
+  head=temp->next;
+  free(temp);
+  
+}
+
+void Print()
+{
+  struct Node*current=head;
+  printf("Stack: ");
+  while(current!=NULL)
+  {
+    printf("%d ",current->data);
+    current=current->next;
+  }
+  printf("\n");
+}
+
+int main()
+{
+  Push(2);
+  Print();
+  Push(3);
+  Print();
+  Push(4);
+  Print();
+  Pop();
+  Print();
+  Pop();
+  Print();
+  Push(6);
+  Print();
+}
+
