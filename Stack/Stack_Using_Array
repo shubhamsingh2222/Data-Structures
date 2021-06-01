@@ -1,0 +1,103 @@
+#include<stdio.h>
+#include<stdlib.h>
+
+struct stack{
+    
+    int size;
+    int top;
+    int * arr;
+};
+
+int IsEmpty(struct stack*ptr)
+{
+    if(ptr->top==-1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int IsFull(struct stack*ptr)
+{
+    if(ptr->top==ptr->size-1)
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int Push(struct stack*ptr, int val)
+{
+    if(IsFull(ptr))
+    {
+        printf("Stack OverFlow! can not push %d to stack",val);
+    }
+    else
+    {
+        ptr->top++;
+        ptr->arr[ptr->top]=val;
+    }
+}
+
+int Pop(struct stack*ptr)
+{
+    if(IsEmpty(ptr))
+    {
+        printf("Stack UnderFlow! Cannot pop from the stack");
+    }
+    else
+    {
+        int val= ptr->arr[ptr->top];
+        ptr->top--;
+        return val;
+    }
+}
+
+void Print(struct stack*st)
+{
+    for(int i=0;i<st->size;i++)
+    {
+        printf("%d ",st->arr[i]);
+    }
+    printf("\n");
+}
+
+int main()
+{
+    struct stack*st=(struct stack*)malloc(sizeof(struct stack));
+    st->size=10;
+    st->top=-1;
+    st->arr = (int *)malloc(st->size*sizeof(int));
+    printf("Stack has been created successfully\n");
+    
+    printf("Before pushing, Full: %d\n", IsFull(st));
+    printf("Before pushing, Empty: %d\n", IsEmpty(st));
+    Push(st, 1);
+    Push(st, 23);
+    Push(st, 99);
+    Push(st, 75);
+    Push(st, 3);
+    Push(st, 64);
+    Push(st, 57);
+    Push(st, 46);
+    Push(st, 89);
+    Push(st, 6);
+    for(int i=0;i<st->size;i++)
+    {
+        printf("%d ",st->arr[i]);
+    }
+    printf("\n");
+    printf("After pushing, Full: %d\n", IsFull(st));
+    printf("After pushing, Empty: %d\n", IsEmpty(st));
+
+    printf("Popped %d from the stack\n", Pop(st)); 
+    printf("Popped %d from the stack\n", Pop(st)); 
+    printf("Popped %d from the stack\n", Pop(st));
+    return 0;
+}
