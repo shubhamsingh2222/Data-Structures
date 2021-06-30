@@ -105,7 +105,7 @@ int main()
     printf("Popped %d from the stack\n", Pop(st)); 
     printf("Popped %d from the stack\n", Pop(st));
     
-      for(int j=1;j<ptr->top+1;j++)
+      for(int j=1;j<st->top+1;j++)
     {
         printf("The position %d is %d\n",j, Peek(st, j));
     }
