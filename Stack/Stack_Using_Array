@@ -59,13 +59,18 @@ int Pop(struct stack*ptr)
     }
 }
 
-void Print(struct stack*st)
+int Peek(struct Stack*st,int j)
 {
-    for(int i=0;i<st->size;i++)
+    int cmp=st->top-j+1;
+    if(cmp<0)
     {
-        printf("%d ",st->arr[i]);
+        printf("Invalid");
+        return -1;
     }
-    printf("\n");
+    else
+    {
+        return st->arr[cmp];
+    }
 }
 
 int main()
@@ -99,5 +104,11 @@ int main()
     printf("Popped %d from the stack\n", Pop(st)); 
     printf("Popped %d from the stack\n", Pop(st)); 
     printf("Popped %d from the stack\n", Pop(st));
+    
+      for(int j=1;j<ptr->top+1;j++)
+    {
+        printf("The position %d is %d\n",j, Peek(st, j));
+    }
+
     return 0;
 }
